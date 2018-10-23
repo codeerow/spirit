@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+
+    buildTypes {
+        debug {}
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$project.versions.kotlin"
+    api group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: "$project.versions.kotlin"
+
+    /* Android Architecture Components */
+    api "android.arch.lifecycle:extensions:$project.versions.arch.extensions"
+    api "android.arch.lifecycle:viewmodel:$project.versions.arch.viewmodel"
+    api "android.arch.navigation:navigation-fragment-ktx:$project.versions.arch.navigation"
+    api "android.arch.navigation:navigation-ui-ktx:$project.versions.arch.navigation"
+
+    /* ReactiveX */
+    api "io.reactivex.rxjava2:rxjava:$project.versions.rx.java"
+    api "io.reactivex.rxjava2:rxkotlin:$project.versions.rx.kotlin"
+    api "io.reactivex.rxjava2:rxandroid:$project.versions.rx.android"
+    api "com.jakewharton.rxrelay2:rxrelay:$project.versions.rx.relay"
+    api "com.github.tbruyelle:rxpermissions:$project.versions.rx.permission"
+    api "com.jakewharton.rxbinding2:rxbinding:$project.versions.rx.binding"
+    api 'org.greenrobot:eventbus:3.1.1'
+
+    /* Utils */
+    api "com.jakewharton.timber:timber:$project.versions.util.timber"
+}
