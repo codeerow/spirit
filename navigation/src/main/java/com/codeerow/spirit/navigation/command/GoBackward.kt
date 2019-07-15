@@ -1,0 +1,20 @@
+package com.codeerow.spirit.navigation.command
+
+import com.codeerow.spirit.navigation.view.NavigationProvider
+
+
+abstract class GoBackward<T : NavigationProvider> : NavigationCommand() {
+
+    override fun execute(fragment: androidx.fragment.app.Fragment) {
+        val navigationProvider = fragment as? T
+        val handled = handleFragment(navigationProvider)
+        if (!handled) dispatchOnParent(fragment)
+    }
+
+    private fun dispatchOnParent(fragment: androidx.fragment.app.Fragment) {
+        fragment.parentFragment?.let(::execute)
+            ?: execute(fragment.requireActivity())
+    }
+
+    abstract fun handleFragment(navigationProvider: T?): Boolean
+}
