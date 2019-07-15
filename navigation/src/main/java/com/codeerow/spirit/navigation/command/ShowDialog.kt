@@ -3,7 +3,7 @@ package com.codeerow.spirit.navigation.command
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import com.codeerow.spirit.box.utils.classTag
+import com.codeerow.spirit.extensions.classTag
 
 
 class ShowDialog(private val dialog: DialogFragment,

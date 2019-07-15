@@ -35,6 +35,4 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$project.versions.kotlin"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$project.versions.kotlin"
-
-    implementation project(':mvvm')
 }

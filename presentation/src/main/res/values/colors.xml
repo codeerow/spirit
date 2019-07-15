@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3b3c43</color>
+    <color name="colorPrimaryDark">#26262B</color>
+    <color name="colorAccent">#f9b500</color>
+
+
+    <color name="charcoalGrey">#3b3c43</color>
+    <color name="grey">#c8ccd3</color>
+    <color name="white">#ffffff</color>
+    <color name="yellowOrange">#f9b500</color>
+    <color name="red">#ea5455</color>
+
+
+    <color name="lepton_deadline_is_far">#1ca059</color>
+    <color name="lepton_deadline_came">#ea5455</color>
+    <color name="lepton_deadline_is_close">#ea5455</color>
+
+    <color name="project_success">#1ca059</color>
+    <color name="project_in_progress">#f9b500</color>
+    <color name="project_failure">#ea5455</color>
+
+
+    <color name="viewfinder_mask">@android:color/transparent</color>
+    <color name="viewfinder_border">@android:color/transparent</color>
+    <color name="viewfinder_laser">@android:color/transparent</color>
+
+
+    <color name="bottom_navigation">#f6f6f6</color>
+    <color name="background_image_placeholder">#f6f6f6</color>
+    <color name="grey_alpha">#6604040f</color>
+
+   <!--Custom Calendar-->
+    <color name="day_set">#f9b500</color>
+    <color name="day_name">#919aa7</color>
+    <color name="today">#000000</color>
+    <color name="greyed_out">#c7c7c7</color>
+</resources>

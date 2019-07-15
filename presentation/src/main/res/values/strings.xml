@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Spirit</string>
+    <string name="title_a">A Screen</string>
+    <string name="title_b">B Screen</string>
+    <string name="title_c">C Screen</string>
+    <string name="title_d">D Screen</string>
+    <string name="title_e">E Screen</string>
+    <string name="title_f">F Screen</string>
+    <string name="title_transactions">Transactions Screen</string>
+    <string name="title_sign_in">Sign in</string>
+    <string name="title_input_sms">Input sms</string>
+    <string name="title_input_pin">Input pin</string>
+</resources>

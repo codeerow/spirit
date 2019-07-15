@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/AFragment">
+
+    <fragment
+        android:id="@+id/AFragment"
+        android:name="com.codeerow.presentation.ui.screens.fragment_a.AFragment"
+        android:label="AFragment"
+        tools:layout="@layout/fragment_a">
+        <action
+            android:id="@+id/action_AFragment_to_BFragment"
+            app:destination="@id/BFragment" />
+        <action
+            android:id="@+id/action_AFragment_to_transactionsFragment"
+            app:destination="@id/transactionsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/BFragment"
+        android:name="com.codeerow.presentation.ui.screens.fragment_b.BFragment"
+        android:label="BFragment"
+        tools:layout="@layout/fragment_b">
+        <action
+            android:id="@+id/action_BFragment_to_CFragment"
+            app:destination="@id/CFragment" />
+        <action
+            android:id="@+id/action_BFragment_to_FFragment"
+            app:destination="@id/FFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/CFragment"
+        android:name="com.codeerow.presentation.ui.screens.fragment_c.CFragment"
+        android:label="CFragment"
+        tools:layout="@layout/fragment_c">
+        <action
+            android:id="@+id/action_CFragment_to_DFragment"
+            app:destination="@id/DFragment" />
+        <action
+            android:id="@+id/action_CFragment_to_EFragment"
+            app:destination="@id/EFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DFragment"
+        android:name="com.codeerow.presentation.ui.screens.fragment_d.DFragment"
+        android:label="DFragment"
+        tools:layout="@layout/fragment_d">
+        <action
+            android:id="@+id/action_DFragment_to_AFragment"
+            app:destination="@id/AFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/EFragment"
+        android:name="com.codeerow.presentation.ui.screens.fragment_e.EFragment"
+        android:label="EFragment"
+        tools:layout="@layout/fragment_e">
+        <action
+            android:id="@+id/action_EFragment_to_DFragment"
+            app:destination="@id/DFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/FFragment"
+        android:name="com.codeerow.presentation.ui.screens.fragment_f.FFragment"
+        android:label="FFragment"
+        tools:layout="@layout/fragment_f">
+        <action
+            android:id="@+id/action_FFragment_to_holderAFragment"
+            app:destination="@id/holderAFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/transactionsFragment"
+        android:name="com.codeerow.presentation.ui.screens.navigation_block_search.transactions.TransactionsFragment"
+        android:label="TransactionsFragment"
+        tools:layout="@layout/fragment_transactions" />
+
+    <fragment
+        android:id="@+id/holderAFragment"
+        android:name="com.codeerow.presentation.ui.screens.navigation_fragment_holder.holder_a.AHolderFragment"
+        android:label="AHolderFragment"
+        tools:layout="@layout/holder_a_fragment">
+        <action
+            android:id="@+id/action_holderAFragment_to_holderBFragment"
+            app:destination="@id/holderBFragment"
+            app:popUpTo="@+id/navigation_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/holderBFragment"
+        android:name="com.codeerow.presentation.ui.screens.navigation_fragment_holder.holder_b.BHolderFragment"
+        android:label="BHolderFragment"
+        tools:layout="@layout/holder_b_fragment" />
+
+</navigation>

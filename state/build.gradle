@@ -1,3 +1,7 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.codeerow.spirit.box'
+
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
 

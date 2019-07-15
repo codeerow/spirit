@@ -1,4 +1,4 @@
-package com.codeerow.spirit.box.utils
+package com.codeerow.spirit.extensions
 
 import android.content.Context
 import android.content.res.Configuration
