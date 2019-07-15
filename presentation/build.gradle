@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        applicationId "com.codeerow.spirit"
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$project.versions.kotlin"
+
+    implementation project(':mvvm')
+    implementation project(':domain')
+    implementation project(':aac_navigation')
+    implementation project(':extensions')
+
+    /** UI */
+    implementation "androidx.appcompat:appcompat:$project.versions.ui.appcompat"
+    implementation "androidx.constraintlayout:constraintlayout:$project.versions.ui.constraint"
+    implementation "androidx.recyclerview:recyclerview:$project.versions.ui.recycler"
+
+    /** Testing */
+    testImplementation "junit:junit:$project.versions.test.junit"
+
+    // Android Testing Support Library's runner and rules
+    androidTestImplementation "androidx.test:runner:$project.versions.test.runner"
+    androidTestImplementation "androidx.test:rules:$project.versions.test.runner"
+
+    // Espresso UI Testing dependencies.
+    androidTestImplementation "androidx.test.espresso:espresso-core:$project.versions.test.espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$project.versions.test.espresso"
+
+    /** Android Architecture Components */
+//    kapt "androidx.databinding:databinding-compiler:$project.versions.gradle"
+
+    /** DI */
+    implementation "com.google.dagger:dagger:$project.versions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$project.versions.dagger"
+    kapt "com.google.dagger:dagger-android-processor:$project.versions.dagger"
+    implementation "com.google.dagger:dagger-android-support:$project.versions.dagger"
+
+    /** ReactiveX */
+    implementation "com.jakewharton.rxbinding2:rxbinding:$project.versions.rx.binding"
+
+    /** Tools */
+    implementation "com.jakewharton.timber:timber:$project.versions.tools.timber"
+}

@@ -1,0 +1,55 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.codeerow.spirit.box'
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode Integer.parseInt(project.VERSION_CODE)
+        versionName project.VERSION_NAME
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    buildTypes {
+        debug {}
+        release {}
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$project.versions.kotlin"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$project.versions.kotlin"
+
+    api project(':state')
+
+    /** Android Architecture Components */
+    api "androidx.lifecycle:lifecycle-viewmodel:$project.versions.arch.viewmodel"
+    implementation "android.arch.lifecycle:extensions:$project.versions.arch.extensions"
+    implementation "android.arch.lifecycle:reactivestreams:1.1.1"
+
+    /* ReactiveX */
+    api "io.reactivex.rxjava2:rxjava:$project.versions.rx.java"
+    api "io.reactivex.rxjava2:rxkotlin:$project.versions.rx.kotlin"
+    api "io.reactivex.rxjava2:rxandroid:$project.versions.rx.android"
+    api "com.jakewharton.rxrelay2:rxrelay:$project.versions.rx.relay"
+
+    /** UI */
+    api "androidx.appcompat:appcompat:$project.versions.ui.appcompat"
+    api "com.google.android.material:material:$project.versions.ui.material"
+}

@@ -1,0 +1,34 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.codeerow.spirit.box'
+
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$project.versions.kotlin"
+
+    /* ReactiveX */
+    api "io.reactivex.rxjava2:rxjava:$project.versions.rx.java"
+    api "io.reactivex.rxjava2:rxkotlin:$project.versions.rx.kotlin"
+    api "com.jakewharton.rxrelay2:rxrelay:$project.versions.rx.relay"
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$project.versions.kotlin"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
