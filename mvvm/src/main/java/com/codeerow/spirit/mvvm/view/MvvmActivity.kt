@@ -2,9 +2,7 @@ package com.codeerow.spirit.mvvm.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
 import com.codeerow.spirit.mvvm.command.exception.ExceptionHandler
-import com.codeerow.spirit.mvvm.view.extensions.provideViewModel
 import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Observable
@@ -89,13 +87,5 @@ abstract class MvvmActivity : AppCompatActivity(), MvvmView, ExceptionHandler {
     fun Completable.subscribeByView(onNext: () -> Unit = {}): Disposable {
         return subscribe(onNext) { handle(it) }
                 .bindToLifecycle()
-    }
-
-
-    /**
-     *  ViewModels provide utils
-     * */
-    inline fun <reified VM : ViewModel> AppCompatActivity.provideViewModel(body: VM.() -> Unit = {}): VM {
-        return provideViewModel(viewModelFactory, body)
     }
 }

@@ -2,11 +2,7 @@ package com.codeerow.spirit.mvvm.view
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModel
 import com.codeerow.spirit.mvvm.command.exception.ExceptionHandler
-import com.codeerow.spirit.mvvm.view.extensions.provideParentFragmentViewModel
-import com.codeerow.spirit.mvvm.view.extensions.provideSharedViewModel
-import com.codeerow.spirit.mvvm.view.extensions.provideViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import io.reactivex.Completable
 import io.reactivex.Maybe
@@ -57,22 +53,6 @@ abstract class MvvmBottomSheetDialogFragment : BottomSheetDialogFragment(), Mvvm
     override fun onDestroyView() {
         lifecycleDisposables.clear()
         super.onDestroyView()
-    }
-
-
-    /**
-     *  ViewModels provide utils
-     * */
-    inline fun <reified VM : ViewModel> androidx.fragment.app.Fragment.provideViewModel(body: VM.() -> Unit = {}): VM {
-        return provideViewModel(viewModelFactory, body)
-    }
-
-    inline fun <reified VM : ViewModel> androidx.fragment.app.Fragment.provideActivityViewModel(body: VM.() -> Unit = {}): VM {
-        return provideSharedViewModel(viewModelFactory, body)
-    }
-
-    inline fun <reified VM : ViewModel> androidx.fragment.app.Fragment.provideParentFragmentViewModel(body: VM.() -> Unit = {}): VM {
-        return provideParentFragmentViewModel(viewModelFactory, body)
     }
 
 

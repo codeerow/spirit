@@ -7,14 +7,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.codeerow.presentation.R
 import com.codeerow.presentation.databinding.FragmentBBinding
-import com.codeerow.presentation.ui.base.BaseMvvmFragment
+import com.codeerow.spirit.mvvm.view.MvvmFragment
 import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.fragment_b.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class BFragment : BaseMvvmFragment() {
+class BFragment : MvvmFragment() {
 
-    override val viewModel by lazy { provideViewModel<BViewModel>() }
+    override val viewModel by viewModel<BViewModel>()
 
 
     /* Lifecycle */

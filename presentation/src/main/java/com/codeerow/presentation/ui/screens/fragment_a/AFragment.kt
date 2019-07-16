@@ -8,16 +8,17 @@ import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.codeerow.presentation.R
-import com.codeerow.presentation.ui.base.BaseMvvmFragment
 import com.codeerow.spirit.mvvm.state.toLiveData
+import com.codeerow.spirit.mvvm.view.MvvmFragment
 import com.codeerow.spirit.state.State
 import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.fragment_a.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class AFragment : BaseMvvmFragment() {
+class AFragment : MvvmFragment() {
 
-    override val viewModel by lazy { provideViewModel<AViewModel>() }
+    override val viewModel by viewModel<AViewModel>()
 
 
     /** lifecycle */
