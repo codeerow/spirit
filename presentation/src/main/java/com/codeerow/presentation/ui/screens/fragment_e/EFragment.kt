@@ -5,14 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.codeerow.presentation.R
-import com.codeerow.presentation.ui.base.BaseMvvmFragment
+import com.codeerow.spirit.mvvm.view.MvvmFragment
 import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.fragment_c.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class EFragment : BaseMvvmFragment() {
+class EFragment : MvvmFragment() {
 
-    override val viewModel by lazy { provideViewModel<EViewModel>() }
+    override val viewModel by viewModel<EViewModel>()
 
 
     /* Lifecycle */

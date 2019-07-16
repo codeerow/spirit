@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.codeerow.presentation.R
-import com.codeerow.presentation.ui.base.BaseMvvmDialogFragment
+import com.codeerow.presentation.ui.screens.fragment_b.BViewModel
 import com.codeerow.presentation.ui.widgets.recycler.choice.StringListAdapter
-import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
+import com.codeerow.spirit.mvvm.view.MvvmDialogFragment
 import kotlinx.android.synthetic.main.dialog_choose_item.*
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 
-class ChooseItemDialog : BaseMvvmDialogFragment() {
+class ChooseItemDialog : MvvmDialogFragment() {
 
-    private val presentation by lazy { takeViewModel<ChooseItemViewPresentation>() }
-    override val viewModel: MvvmViewModel? = null
+    override val viewModel by sharedViewModel<BViewModel>()
 
 
     /* Lifecycle */
@@ -30,12 +30,12 @@ class ChooseItemDialog : BaseMvvmDialogFragment() {
 
     private fun setupRecyclerView() = rvChoices.apply {
         layoutManager = androidx.recyclerview.widget.LinearLayoutManager(requireContext())
-        adapter = StringListAdapter(presentation)
+        adapter = StringListAdapter(viewModel)
 
-        presentation.listBehavior = { holder, position ->
+        viewModel.listBehavior = { holder, position ->
             holder.itemView.setOnClickListener {
-                presentation.entities.value?.get(position)?.let {
-                    presentation.selectedItem.value = it
+                viewModel.entities.value?.get(position)?.let {
+                    viewModel.selectedItem.value = it
                     this@ChooseItemDialog.dismiss()
                 }
             }

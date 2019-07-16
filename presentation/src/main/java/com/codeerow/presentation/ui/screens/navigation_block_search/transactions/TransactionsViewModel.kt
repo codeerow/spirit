@@ -2,22 +2,16 @@ package com.codeerow.presentation.ui.screens.navigation_block_search.transaction
 
 import androidx.fragment.app.DialogFragment
 import com.codeerow.presentation.ui.screens.navigation_block_search.search_form_dialog.SearchFormDialogFragment
-import com.codeerow.presentation.ui.screens.navigation_block_search.search_form_dialog.SearchFormViewPresentation
+import com.codeerow.presentation.ui.screens.navigation_block_search.search_form_dialog.SearchFormViewModel
 import com.codeerow.presentation.ui.screens.navigation_block_search.search_result_dialog.SearchResultDialogFragment
 import com.codeerow.presentation.ui.screens.navigation_block_search.search_result_dialog.SearchResultDialogFragment.Companion.ARG_INITIAL_SEARCH_RESULT
 import com.codeerow.spirit.R
-import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
 import com.codeerow.spirit.navigation.command.ShowDialog
 import com.codeerow.spirit.navigation.extensions.navigate
-import com.jakewharton.rxrelay2.PublishRelay
-import javax.inject.Inject
 
 
-class TransactionsViewModel @Inject constructor() : MvvmViewModel(),
-        SearchFormViewPresentation {
+class TransactionsViewModel : SearchFormViewModel() {
 
-
-    override val searchForm: PublishRelay<String> = PublishRelay.create()
 
     init {
         searchForm.doOnNext(::showSearchResults).subscribeByViewModel()
