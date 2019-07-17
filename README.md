@@ -5,18 +5,8 @@ Library based on new Android Architecture Components (ViewModel and LiveData) an
 Inside repo you can find some complicated and not workflows that easily
 handled with Spirit.
 
-Spirit offers the following features:
-
-* MVVM structure out of box.
-* Navigation core that makes even hard navigation easy.
-* UIConfiguration core with ready to use ToolbarConfiguration and BottomNavigationConfiguration
-  that makes managing application UI easy.
-* Some usefull extensions.
-
-
 ## ProGuard
 Spirit is completely without reflection! No special ProGuard rules required.
-
 
 ## Installation
 
