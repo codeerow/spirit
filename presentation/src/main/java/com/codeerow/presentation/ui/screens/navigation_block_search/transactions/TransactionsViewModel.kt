@@ -10,10 +10,9 @@ import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
 import com.codeerow.spirit.navigation.command.ShowDialog
 import com.codeerow.spirit.navigation.extensions.navigate
 import com.jakewharton.rxrelay2.PublishRelay
-import javax.inject.Inject
 
 
-class TransactionsViewModel @Inject constructor() : MvvmViewModel(),
+class TransactionsViewModel : MvvmViewModel(),
         SearchFormViewPresentation {
 
 

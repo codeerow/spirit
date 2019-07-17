@@ -7,14 +7,16 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codeerow.presentation.R
-import com.codeerow.presentation.ui.base.BaseMvvmDialogFragment
 import com.codeerow.presentation.ui.widgets.recycler.choice.StringListAdapter
+import com.codeerow.spirit.mvvm.view.MvvmDialogFragment
 import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.dialog_search_result.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class SearchResultDialogFragment : BaseMvvmDialogFragment() {
-    override val viewModel by lazy { provideViewModel<SearchResultViewModel>() }
+class SearchResultDialogFragment : MvvmDialogFragment() {
+
+    override val viewModel by viewModel<SearchResultViewModel>()
 
 
     /* Lifecycle */

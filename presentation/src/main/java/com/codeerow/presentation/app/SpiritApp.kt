@@ -1,46 +1,28 @@
 package com.codeerow.presentation.app
 
-import android.app.Activity
 import android.app.Application
-import androidx.fragment.app.Fragment
-import com.codeerow.presentation.injection.DaggerAppComponent
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import dagger.android.support.HasSupportFragmentInjector
-import javax.inject.Inject
+import com.codeerow.presentation.injection.app
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 
-class SpiritApp : Application(),
-        HasSupportFragmentInjector,
-        HasActivityInjector {
-
-    @Inject
-    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
-
-    @Inject
-    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
+class SpiritApp : Application() {
 
 
     /* Lifecycle methods */
     override fun onCreate() {
         super.onCreate()
         instance = this
-        setUpDagger()
         Configurator().invoke(this)
+        startKoin {
+            androidLogger()
+            androidContext(this@SpiritApp)
+            modules(app)
+        }
     }
 
-
-    /* Dagger */
-    override fun supportFragmentInjector() = fragmentInjector
-
-    override fun activityInjector() = activityInjector
-
-    private fun setUpDagger() {
-        DaggerAppComponent.builder().create(this).inject(this)
-    }
-
-
-    /* Companion*/
+    /* Companion */
     companion object {
         lateinit var instance: SpiritApp
     }

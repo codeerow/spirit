@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
 import com.codeerow.presentation.R
-import com.codeerow.presentation.ui.base.BaseMvvmDialogFragment
+import com.codeerow.spirit.mvvm.view.MvvmDialogFragment
+import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
 import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.dialog_search_form.*
 
 
-class SearchFormDialogFragment : BaseMvvmDialogFragment() {
+class SearchFormDialogFragment : MvvmDialogFragment() {
 
     private val presentation by lazy { takeViewModel<SearchFormViewPresentation>() }
     override val viewModel: MvvmViewModel? = null

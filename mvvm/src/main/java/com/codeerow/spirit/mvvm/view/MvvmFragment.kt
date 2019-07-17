@@ -3,11 +3,7 @@ package com.codeerow.spirit.mvvm.view
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import com.codeerow.spirit.mvvm.command.exception.ExceptionHandler
-import com.codeerow.spirit.mvvm.view.extensions.provideParentFragmentViewModel
-import com.codeerow.spirit.mvvm.view.extensions.provideSharedViewModel
-import com.codeerow.spirit.mvvm.view.extensions.provideViewModel
 import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Observable
@@ -59,21 +55,6 @@ abstract class MvvmFragment : Fragment(), MvvmView, ExceptionHandler {
         super.onDestroyView()
     }
 
-
-    /**
-     *  ViewModels provide utils
-     * */
-    inline fun <reified VM : ViewModel> Fragment.provideViewModel(body: VM.() -> Unit = {}): VM {
-        return provideViewModel(viewModelFactory, body)
-    }
-
-    inline fun <reified VM : ViewModel> Fragment.provideActivityViewModel(body: VM.() -> Unit = {}): VM {
-        return provideSharedViewModel(viewModelFactory, body)
-    }
-
-    inline fun <reified VM : ViewModel> Fragment.provideParentFragmentViewModel(body: VM.() -> Unit = {}): VM {
-        return provideParentFragmentViewModel(viewModelFactory, body)
-    }
 
 
     /**

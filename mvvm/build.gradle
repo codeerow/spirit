@@ -1,6 +1,6 @@
 apply plugin: 'com.github.dcendents.android-maven'
 
-group='com.github.codeerow.spirit.box'
+group='com.github.codeerow.spirit'
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
@@ -40,8 +40,8 @@ dependencies {
 
     /** Android Architecture Components */
     api "androidx.lifecycle:lifecycle-viewmodel:$project.versions.arch.viewmodel"
-    implementation "android.arch.lifecycle:extensions:$project.versions.arch.extensions"
-    implementation "android.arch.lifecycle:reactivestreams:1.1.1"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.0.0'
 
     /* ReactiveX */
     api "io.reactivex.rxjava2:rxjava:$project.versions.rx.java"

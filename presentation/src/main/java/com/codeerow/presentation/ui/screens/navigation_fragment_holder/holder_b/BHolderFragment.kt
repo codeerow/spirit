@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.codeerow.presentation.R
-import com.codeerow.presentation.ui.base.BaseAacNavigationFragment
 import com.codeerow.spirit.aac_navigation.view.AacNavSettings
+import com.codeerow.spirit.aac_navigation.view.AacNavigationFragment
 import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
 
 
-class BHolderFragment : BaseAacNavigationFragment() {
+class BHolderFragment : AacNavigationFragment() {
     override val viewModel: MvvmViewModel? = null
 
     override val settings = AacNavSettings(

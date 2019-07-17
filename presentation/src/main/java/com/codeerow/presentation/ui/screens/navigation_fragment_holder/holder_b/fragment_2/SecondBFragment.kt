@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.codeerow.presentation.R
-import com.codeerow.presentation.ui.base.BaseMvvmFragment
+import com.codeerow.spirit.mvvm.view.MvvmFragment
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class SecondBFragment : BaseMvvmFragment() {
+class SecondBFragment : MvvmFragment() {
 
-    override val viewModel by lazy { provideViewModel<SecondBViewModel>() }
+    override val viewModel by viewModel<SecondBViewModel>()
 
 
     /* Lifecycle */

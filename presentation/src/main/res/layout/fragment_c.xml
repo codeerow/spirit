@@ -30,7 +30,8 @@
         android:layout_marginBottom="8dp"
         android:text="Navigate D"
         app:layout_constraintBottom_toTopOf="@+id/btnNavigateE"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="8dp" />
 
     <Button
         android:id="@+id/btnNavigateE"
@@ -40,6 +41,7 @@
         android:layout_marginBottom="8dp"
         android:text="Navigate E"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

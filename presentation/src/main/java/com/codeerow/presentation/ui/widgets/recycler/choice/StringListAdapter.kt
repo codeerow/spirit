@@ -1,19 +1,19 @@
 package com.codeerow.presentation.ui.widgets.recycler.choice
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.codeerow.presentation.databinding.ListItemStringBinding
+import androidx.recyclerview.widget.RecyclerView
+import com.codeerow.presentation.R
 
 
-class StringListAdapter(private val viewModel: StringListViewModel) : androidx.recyclerview.widget.RecyclerView.Adapter<StringListViewHolder>() {
+class StringListAdapter(private val viewModel: StringListViewModel) : RecyclerView.Adapter<StringListViewHolder>() {
 
     override fun getItemCount() = viewModel.entities.value?.size ?: 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StringListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = ListItemStringBinding.inflate(inflater, parent, false)
-        return StringListViewHolder(binding)
+        val view = inflater.inflate(R.layout.list_item_string, parent, false)
+        return StringListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: StringListViewHolder, position: Int) {
