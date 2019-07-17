@@ -4,25 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.codeerow.presentation.R
-import com.codeerow.presentation.databinding.FragmentBBinding
-import com.codeerow.presentation.ui.base.BaseMvvmFragment
+import com.codeerow.spirit.mvvm.view.MvvmFragment
 import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.fragment_b.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class BFragment : BaseMvvmFragment() {
+class BFragment : MvvmFragment() {
 
-    override val viewModel by lazy { provideViewModel<BViewModel>() }
+    override val viewModel by viewModel<BViewModel>()
 
 
-    /* Lifecycle */
+    /** lifecycle */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding: FragmentBBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_b, container, false)
-        binding.viewmodel = viewModel
-        binding.lifecycleOwner = this
-        return binding.root
+        return inflater.inflate(R.layout.fragment_b, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,5 +33,15 @@ class BFragment : BaseMvvmFragment() {
 
         RxView.clicks(btnSelectItem)
                 .subscribeByView { viewModel.selectItem() }
+
+        configureSelectedItem()
+    }
+
+
+    /** configurations */
+    private fun configureSelectedItem() {
+        viewModel.selectedItem.observe(this, Observer {
+            tvSelectedItem.text = it
+        })
     }
 }

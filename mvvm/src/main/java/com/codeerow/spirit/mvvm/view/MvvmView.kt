@@ -1,6 +1,5 @@
 package com.codeerow.spirit.mvvm.view
 
-import androidx.lifecycle.ViewModelProvider
 import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -13,11 +12,6 @@ interface MvvmView {
      * ViewModels commands on view.
      * */
     val viewModel: MvvmViewModel?
-
-    /**
-     * Creates ViewModel instance
-     * */
-    var viewModelFactory: ViewModelProvider.Factory
 
 
     /**

@@ -11,10 +11,9 @@ import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
 import com.codeerow.spirit.navigation.command.ShowDialog
 import com.codeerow.spirit.navigation.extensions.navigate
 import com.jakewharton.rxrelay2.PublishRelay
-import javax.inject.Inject
 
 
-class SearchResultViewModel @Inject constructor() : MvvmViewModel(),
+class SearchResultViewModel : MvvmViewModel(),
         StringListViewModel,
         SearchFormViewPresentation {
 

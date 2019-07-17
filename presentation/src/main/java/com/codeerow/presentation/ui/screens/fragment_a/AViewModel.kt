@@ -9,11 +9,10 @@ import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
 import com.codeerow.spirit.navigation.extensions.navigate
 import com.codeerow.spirit.state.State
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
 import kotlin.random.Random
 
 
-class AViewModel @Inject constructor() : MvvmViewModel() {
+class AViewModel : MvvmViewModel() {
 
     val state = BindableLiveData<State>(default = State.New())
 

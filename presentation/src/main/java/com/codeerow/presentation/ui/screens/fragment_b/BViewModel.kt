@@ -9,10 +9,9 @@ import com.codeerow.spirit.aac_navigation.command.AacGoForward
 import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
 import com.codeerow.spirit.navigation.command.ShowDialog
 import com.codeerow.spirit.navigation.extensions.navigate
-import javax.inject.Inject
 
 
-class BViewModel @Inject constructor() : MvvmViewModel(),
+class BViewModel : MvvmViewModel(),
         ChooseItemViewPresentation {
 
     override var listBehavior: (item: StringListViewHolder, position: Int) -> Any = { _, _ -> }

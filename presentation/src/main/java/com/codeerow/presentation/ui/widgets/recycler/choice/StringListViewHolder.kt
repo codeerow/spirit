@@ -1,14 +1,14 @@
 package com.codeerow.presentation.ui.widgets.recycler.choice
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.codeerow.presentation.databinding.ListItemStringBinding
+import kotlinx.android.synthetic.main.list_item_string.view.*
 
 
-class StringListViewHolder(val binding: ListItemStringBinding) : androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root) {
+class StringListViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
 
     fun bind(item: String) {
-        binding.item = item
-        binding.executePendingBindings()
+        view.tvItemValue.text = item
     }
 }

@@ -3,13 +3,13 @@ package com.codeerow.presentation.ui
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import com.codeerow.presentation.R
-import com.codeerow.presentation.ui.base.BaseAacNavigationActivity
 import com.codeerow.spirit.aac_navigation.view.AacNavSettings
+import com.codeerow.spirit.aac_navigation.view.AacNavigationActivity
 import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : BaseAacNavigationActivity() {
+class MainActivity : AacNavigationActivity() {
 
     override val viewModel: MvvmViewModel? = null
 

@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.codeerow.presentation.R
-import com.codeerow.presentation.ui.base.BaseMvvmDialogFragment
 import com.codeerow.presentation.ui.widgets.recycler.choice.StringListAdapter
+import com.codeerow.spirit.mvvm.view.MvvmDialogFragment
 import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
 import kotlinx.android.synthetic.main.dialog_choose_item.*
 
 
-class ChooseItemDialog : BaseMvvmDialogFragment() {
+class ChooseItemDialog : MvvmDialogFragment() {
 
     private val presentation by lazy { takeViewModel<ChooseItemViewPresentation>() }
     override val viewModel: MvvmViewModel? = null

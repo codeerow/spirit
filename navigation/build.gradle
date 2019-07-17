@@ -1,6 +1,6 @@
 apply plugin: 'com.github.dcendents.android-maven'
 
-group='com.github.codeerow.spirit.box'
+group='com.github.codeerow.spirit'
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
