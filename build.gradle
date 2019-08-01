@@ -48,7 +48,9 @@ buildscript {
         jcenter()
         mavenLocal()
         maven { url 'https://maven.fabric.io/public' }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
+
 
     dependencies {
         classpath "com.android.tools.build:gradle:${project.versions.gradle}"
@@ -56,11 +58,16 @@ buildscript {
 
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$project.versions.arch.safe_args"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+
+        classpath "io.franzbecker:gradle-lombok:3.1.0"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
+subprojects {
+    apply plugin: 'io.franzbecker.gradle-lombok'
+}
 
 allprojects {
     repositories {

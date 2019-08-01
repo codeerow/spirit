@@ -12,12 +12,12 @@ class AacGoBackward : GoBackward<AacNavigationProvider>() {
 
     override fun handleFragment(navigationProvider: AacNavigationProvider?): Boolean {
         if (navigationProvider == null) return false
-        return navigationProvider.navHostFragment.navController.navigateUp()
+        return navigationProvider.navController.value?.navigateUp() ?: false
     }
 
     override fun execute(activity: FragmentActivity) {
         val navigationProvider = activity as? AacNavigationProvider
-        val handled = navigationProvider?.navHostFragment?.navController?.navigateUp()
-        if (handled != true) activity.finish()
+        val handled = navigationProvider?.navController?.value?.navigateUp() ?: false
+        if (!handled) activity.finish()
     }
 }
