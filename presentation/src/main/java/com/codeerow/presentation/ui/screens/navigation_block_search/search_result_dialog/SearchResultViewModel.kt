@@ -2,11 +2,11 @@ package com.codeerow.presentation.ui.screens.navigation_block_search.search_resu
 
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.MutableLiveData
+import com.codeerow.presentation.R
 import com.codeerow.presentation.ui.screens.navigation_block_search.search_form_dialog.SearchFormDialogFragment
 import com.codeerow.presentation.ui.screens.navigation_block_search.search_form_dialog.SearchFormViewPresentation
 import com.codeerow.presentation.ui.widgets.recycler.choice.StringListViewHolder
 import com.codeerow.presentation.ui.widgets.recycler.choice.StringListViewModel
-import com.codeerow.spirit.R
 import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
 import com.codeerow.spirit.navigation.command.ShowDialog
 import com.codeerow.spirit.navigation.extensions.navigate
