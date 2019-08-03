@@ -17,10 +17,13 @@ abstract class AacNavigationFragment : MvvmFragment(),
     override fun onBackPressed(): Boolean {
         val navHostFragment = childFragmentManager.fragments.firstOrNull()
         val childFragment = navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
-        var handled = (childFragment as? BackPressedDelegate)?.onBackPressed()
-        if (handled == true) return true
-        handled = navController.value?.navigateUp()
-        if (handled == true && navHostFragment?.childFragmentManager?.backStackEntryCount == 0) return false
-        return handled ?: false
+        var handled = (childFragment as? BackPressedDelegate)?.onBackPressed() ?: false
+        if (!handled) {
+            handled = navController.value?.popBackStack() ?: false
+            if (handled && navHostFragment?.childFragmentManager?.backStackEntryCount == 0) {
+                handled = false
+            }
+        }
+        return handled
     }
 }

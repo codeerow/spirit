@@ -8,10 +8,11 @@ buildscript {
         targetSdkVersion = 28
 
         versions = [
-                kotlin: '1.3.41',
-                gradle: '3.4.2',
-                koin  : '2.0.1',
-                rx    : [
+                kotlin     : '1.3.41',
+                gradle     : '3.4.2',
+                koin       : '2.0.1',
+                databinding: '1.0.1',
+                rx         : [
                         java      : '2.1.12',
                         kotlin    : '2.0.0',
                         android   : '2.1.0',
@@ -20,24 +21,24 @@ buildscript {
                         permission: '0.10.2',
 
                 ],
-                arch  : [
+                arch       : [
                         viewmodel : '2.2.0-alpha01',
                         extensions: '2.2.0-alpha01',
                         navigation: '2.1.0-alpha01',
                         safe_args : '2.1.0-alpha04',
                 ],
-                ui    : [
+                ui         : [
                         appcompat : '1.0.2',
                         constraint: '2.0.0-beta1',
                         recycler  : '1.0.0',
                         material  : '1.0.0-rc01'
                 ],
-                test  : [
+                test       : [
                         runner  : '1.2.0',
                         junit   : '4.12',
                         espresso: '3.2.0'
                 ],
-                tools : [
+                tools      : [
                         timber: '4.7.1'
                 ]
         ]
@@ -65,9 +66,6 @@ buildscript {
     }
 }
 
-subprojects {
-    apply plugin: 'io.franzbecker.gradle-lombok'
-}
 
 allprojects {
     repositories {
