@@ -32,7 +32,7 @@ fun BindableLiveData<State>.bindWith(vararg states: BehaviorRelay<State>) {
 }
 
 
-fun BehaviorRelay<State>.toLiveData(): LiveData<State> {
+fun <T> BehaviorRelay<T>.toLiveData(): LiveData<T> {
     return LiveDataReactiveStreams.fromPublisher(this.toFlowable(BackpressureStrategy.LATEST))
 }
 
