@@ -37,6 +37,9 @@ dependencies {
     implementation project(':aac_navigation')
     implementation project(':extensions')
 
+    /** Databinding */
+    implementation "com.github.codeerow:dsldatabinding:$project.versions.databinding"
+
     /** UI */
     implementation "androidx.appcompat:appcompat:$project.versions.ui.appcompat"
     implementation "androidx.constraintlayout:constraintlayout:$project.versions.ui.constraint"

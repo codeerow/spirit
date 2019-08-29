@@ -15,8 +15,7 @@ abstract class AacNavigationActivity : MvvmActivity(),
     override fun onBackPressed() {
         val navHostFragment = supportFragmentManager.fragments.firstOrNull()
         val child = navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
-        val handled = (child as? BackPressedDelegate)?.onBackPressed()
-        if (handled == true) return
-        super.onBackPressed()
+        val handled = (child as? BackPressedDelegate)?.onBackPressed() ?: false
+        if (!handled) super.onBackPressed()
     }
 }

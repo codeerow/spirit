@@ -12,6 +12,6 @@ interface ExceptionHandler {
      * */
     fun handle(throwable: Throwable): Boolean {
         Log.e("Exception handler", "default handler", throwable)
-        return true
-    }
+        return false
+    }//
 }
