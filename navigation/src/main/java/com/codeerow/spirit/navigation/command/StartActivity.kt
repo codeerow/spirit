@@ -2,24 +2,35 @@ package com.codeerow.spirit.navigation.command
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 
 
-class StartActivity(private val activity: Class<out androidx.fragment.app.FragmentActivity>,
+class StartActivity(private val activity: Class<out FragmentActivity>,
                     private val finishCurrentActivity: Boolean = false,
                     private val forResult: Int? = null,
                     private val configureArgs: Bundle.() -> Unit = {}) : NavigationCommand() {
 
-    override fun execute(fragment: androidx.fragment.app.Fragment) = handle(fragment.requireActivity())
-    override fun execute(activity: androidx.fragment.app.FragmentActivity) = handle(activity)
+    override fun execute(fragment: Fragment) {
+        val currentActivity = fragment.requireActivity()
+        val intent = configureIntent(currentActivity)
+        forResult?.let { fragment.startActivityForResult(intent, it) }
+                ?: fragment.startActivity(intent)
+        if (finishCurrentActivity) currentActivity.finish()
+    }
+
+    override fun execute(activity: FragmentActivity) {
+        val intent = configureIntent(activity)
+        forResult?.let { activity.startActivityForResult(intent, it) }
+                ?: activity.startActivity(intent)
+        if (finishCurrentActivity) activity.finish()
+    }
 
 
-    private fun handle(currentActivity: androidx.fragment.app.FragmentActivity) {
+    private fun configureIntent(currentActivity: FragmentActivity): Intent {
         val intent = Intent(currentActivity, activity)
         val arguments = Bundle()
         arguments.configureArgs()
-        intent.putExtras(arguments)
-        forResult?.let { currentActivity.startActivityForResult(intent, it) }
-                ?: currentActivity.startActivity(intent)
-        if (finishCurrentActivity) currentActivity.finish()
+        return intent.putExtras(arguments)
     }
 }
