@@ -2,14 +2,13 @@ package com.codeerow.presentation.ui.screens.navigation_fragment_holder.holder_b
 
 import com.codeerow.presentation.R
 import com.codeerow.spirit.aac_navigation.command.AacGoForward
-import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
-import com.codeerow.spirit.navigation.extensions.navigate
+import com.codeerow.spirit.navigation.Router
 
 
-class FirstBViewModel : MvvmViewModel() {
+class FirstBRouter : Router() {
 
     /* Navigation */
     fun navigateSecondB() {
-        navigate(AacGoForward(actionID = R.id.action_firstBFragment_to_secondBFragment))
+        navigationBus.value = AacGoForward(actionID = R.id.action_firstBFragment_to_secondBFragment)
     }
 }

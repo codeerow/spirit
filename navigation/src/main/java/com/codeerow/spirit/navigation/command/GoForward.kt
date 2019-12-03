@@ -9,19 +9,19 @@ abstract class GoForward<T : NavigationProvider> : NavigationCommand() {
 
     override fun execute(fragment: Fragment) {
         val navigationProvider = fragment as? T
-        val handled = handle(navigationProvider)
+        handled = handle(navigationProvider)
         if (!handled) dispatchOnParent(fragment)
     }
 
     private fun dispatchOnParent(fragment: Fragment) {
         fragment.parentFragment?.let(::execute)
-            ?: execute(fragment.requireActivity())
+                ?: execute(fragment.requireActivity())
     }
 
     override fun execute(activity: FragmentActivity) {
         val navigationProvider = activity as? T
-        val handled = handle(navigationProvider)
-        if (!handled) throw IllegalStateException("Parent activity ${activity.localClassName} should implement handler for this command ${this::class.java.simpleName}")
+        handled = handle(navigationProvider)
+        check(handled) { "Parent activity ${activity.localClassName} should implement handler for this command ${this::class.java.simpleName}" }
     }
 
     abstract fun handle(navigationProvider: T?): Boolean

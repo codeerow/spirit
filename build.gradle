@@ -3,35 +3,35 @@
 buildscript {
 
     ext {
-        compileSdkVersion = 28
+        compileSdkVersion = 29
         minSdkVersion = 14
-        targetSdkVersion = 28
+        targetSdkVersion = 29
 
         versions = [
-                kotlin     : '1.3.41',
+                kotlin     : '1.3.50',
                 gradle     : '3.4.2',
                 koin       : '2.0.1',
                 databinding: '1.0.1',
                 rx         : [
                         java      : '2.1.12',
                         kotlin    : '2.0.0',
-                        android   : '2.1.0',
+                        android   : '2.1.1',
                         relay     : '2.1.0',
                         binding   : '2.2.0',
                         permission: '0.10.2',
 
                 ],
                 arch       : [
-                        viewmodel : '2.2.0-alpha01',
-                        extensions: '2.2.0-alpha01',
-                        navigation: '2.1.0-alpha01',
-                        safe_args : '2.1.0-alpha04',
+                        viewmodel : '2.2.0-rc02',
+                        extensions: '2.2.0-rc02',
+                        navigation: '2.2.0-rc02',
+                        safe_args : '2.2.0-rc02',
                 ],
                 ui         : [
                         appcompat : '1.0.2',
-                        constraint: '2.0.0-beta1',
-                        recycler  : '1.0.0',
-                        material  : '1.0.0-rc01'
+                        constraint: '2.0.0-beta3',
+                        recycler  : '1.1.0',
+                        material  : '1.2.0-alpha02'
                 ],
                 test       : [
                         runner  : '1.2.0',

@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.codeerow.presentation.R
-import com.codeerow.spirit.mvvm.view.MvvmFragment
+import com.codeerow.presentation.ui.core.RxFragment
+import com.codeerow.spirit.navigation.extensions.attachRouter
 import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.fragment_1a.*
-import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class FirstBFragment : MvvmFragment() {
+class FirstBFragment : RxFragment() {
 
-    override val viewModel by viewModel<FirstBViewModel>()
+    private val router = FirstBRouter()
 
 
     /* Lifecycle */
@@ -23,7 +23,8 @@ class FirstBFragment : MvvmFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        attachRouter(router)
         RxView.clicks(buttonNavigateSecond)
-                .subscribeByView { viewModel.navigateSecondB() }
+                .subscribeByView { router.navigateSecondB() }
     }
 }

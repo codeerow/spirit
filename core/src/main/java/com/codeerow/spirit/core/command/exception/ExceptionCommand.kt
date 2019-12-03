@@ -1,8 +1,8 @@
-package com.codeerow.spirit.mvvm.command.exception
+package com.codeerow.spirit.core.command.exception
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.codeerow.spirit.mvvm.command.ViewCommand
+import com.codeerow.spirit.core.command.ViewCommand
 
 
 /**

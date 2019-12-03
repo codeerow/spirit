@@ -36,6 +36,11 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$project.versions.kotlin"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$project.versions.kotlin"
 
-    implementation project(':mvvm')
+    /** Android Architecture Components */
+    api "androidx.lifecycle:lifecycle-viewmodel:$project.versions.arch.viewmodel"
+    implementation "androidx.lifecycle:lifecycle-extensions:$project.versions.arch.extensions"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:$project.versions.arch.extensions"
+
+    api project(':core')
     implementation project(':extensions')
 }

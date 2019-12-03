@@ -5,15 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.codeerow.presentation.R
-import com.codeerow.spirit.mvvm.view.MvvmFragment
+import com.codeerow.presentation.ui.core.RxFragment
+import com.codeerow.spirit.navigation.extensions.attachRouter
 import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.fragment_transactions.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class TransactionsFragment : MvvmFragment() {
+class TransactionsFragment : RxFragment() {
 
-    override val viewModel by viewModel<TransactionsViewModel>()
+    private val viewModel by viewModel<TransactionsViewModel>()
 
 
     /* Lifecycle */
@@ -23,6 +24,7 @@ class TransactionsFragment : MvvmFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        attachRouter(viewModel.router)
 
         RxView.clicks(btnSearch)
                 .subscribeByView { viewModel.makeSearch() }

@@ -8,17 +8,18 @@ import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.codeerow.presentation.R
+import com.codeerow.presentation.ui.core.RxFragment
 import com.codeerow.spirit.mvvm.state.toLiveData
-import com.codeerow.spirit.mvvm.view.MvvmFragment
+import com.codeerow.spirit.navigation.extensions.attachRouter
 import com.codeerow.spirit.state.State
 import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.fragment_a.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class AFragment : MvvmFragment() {
+class AFragment : RxFragment() {
 
-    override val viewModel by viewModel<AViewModel>()
+    private val viewModel by viewModel<AViewModel>()
 
 
     /** lifecycle */
@@ -28,12 +29,13 @@ class AFragment : MvvmFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        attachRouter(viewModel.router)
 
         RxView.clicks(btnNavigateB)
-                .subscribeByView { viewModel.navigateB() }
+                .subscribeByView { viewModel.router.navigateB() }
 
         RxView.clicks(btnTransactions)
-                .subscribeByView { viewModel.navigateTransactions() }
+                .subscribeByView { viewModel.router.navigateTransactions() }
 
         RxView.clicks(btnMakeRequest)
                 .subscribeByView { viewModel.makeRequest() }

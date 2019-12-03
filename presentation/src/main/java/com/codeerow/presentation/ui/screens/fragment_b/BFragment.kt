@@ -6,15 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.codeerow.presentation.R
-import com.codeerow.spirit.mvvm.view.MvvmFragment
+import com.codeerow.presentation.ui.core.RxFragment
+import com.codeerow.spirit.navigation.extensions.attachRouter
 import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.fragment_b.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class BFragment : MvvmFragment() {
+class BFragment : RxFragment() {
 
-    override val viewModel by viewModel<BViewModel>()
+    private val viewModel by viewModel<BViewModel>()
+
+    private val router = BRouter()
 
 
     /** lifecycle */
@@ -24,15 +27,16 @@ class BFragment : MvvmFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        attachRouter(router)
 
         RxView.clicks(btnNavigateC)
-                .subscribeByView { viewModel.navigateC() }
+                .subscribeByView { router.navigateC() }
 
         RxView.clicks(btnNavigateF)
-                .subscribeByView { viewModel.navigateF() }
+                .subscribeByView { router.navigateF() }
 
         RxView.clicks(btnSelectItem)
-                .subscribeByView { viewModel.selectItem() }
+                .subscribeByView { router.navigateItem() }
 
         configureSelectedItem()
     }

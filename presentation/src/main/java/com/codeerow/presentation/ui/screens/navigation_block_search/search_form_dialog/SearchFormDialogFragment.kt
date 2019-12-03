@@ -4,17 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import com.codeerow.presentation.R
-import com.codeerow.spirit.mvvm.view.MvvmDialogFragment
-import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
+import com.codeerow.spirit.mvvm.view.extensions.takeViewModel
 import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.dialog_search_form.*
 
 
-class SearchFormDialogFragment : MvvmDialogFragment() {
+class SearchFormDialogFragment : DialogFragment() {
 
     private val presentation by lazy { takeViewModel<SearchFormViewPresentation>() }
-    override val viewModel: MvvmViewModel? = null
 
 
     /* Lifecycle */
@@ -26,7 +25,7 @@ class SearchFormDialogFragment : MvvmDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         RxView.clicks(btnSearch)
-                .subscribeByView {
+                .subscribe {
                     presentation.searchForm.accept("Search was done")
                     dismiss()
                 }

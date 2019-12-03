@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.codeerow.dsl_databinding.databinding
 import com.codeerow.presentation.R
-import com.codeerow.spirit.mvvm.view.MvvmFragment
+import com.codeerow.presentation.ui.core.RxFragment
 import com.codeerow.spirit.navigation.view.BackPressedDelegate
 import kotlinx.android.synthetic.main.fragment_2b.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class SecondBFragment : MvvmFragment(), BackPressedDelegate {
+class SecondBFragment : RxFragment(), BackPressedDelegate {
 
-    override val viewModel by viewModel<SecondBViewModel>()
+    private val viewModel by viewModel<SecondBViewModel>()
 
 
     /** lifecycle */

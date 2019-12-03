@@ -1,4 +1,4 @@
-package com.codeerow.spirit.mvvm.command.exception
+package com.codeerow.spirit.core.command.exception
 
 import android.util.Log
 

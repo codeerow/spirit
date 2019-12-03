@@ -4,17 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import com.codeerow.presentation.R
 import com.codeerow.presentation.ui.widgets.recycler.choice.StringListAdapter
-import com.codeerow.spirit.mvvm.view.MvvmDialogFragment
-import com.codeerow.spirit.mvvm.viewmodel.MvvmViewModel
+import com.codeerow.spirit.mvvm.view.extensions.takeViewModel
 import kotlinx.android.synthetic.main.dialog_choose_item.*
 
 
-class ChooseItemDialog : MvvmDialogFragment() {
+class ChooseItemDialog : DialogFragment() {
 
     private val presentation by lazy { takeViewModel<ChooseItemViewPresentation>() }
-    override val viewModel: MvvmViewModel? = null
 
 
     /* Lifecycle */

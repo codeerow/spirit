@@ -1,1 +1,1 @@
-include ':mvvm', ':navigation', ':aac_navigation', ':extensions', ':presentation', ':domain', ':state'
+include ':mvvm', ':navigation', ':aac_navigation', ':extensions', ':presentation', ':domain', ':state', ':core'

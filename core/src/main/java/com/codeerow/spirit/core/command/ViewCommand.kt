@@ -1,4 +1,4 @@
-package com.codeerow.spirit.mvvm.command
+package com.codeerow.spirit.core.command
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

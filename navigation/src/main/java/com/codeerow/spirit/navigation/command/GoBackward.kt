@@ -8,7 +8,7 @@ abstract class GoBackward<T : NavigationProvider> : NavigationCommand() {
 
     override fun execute(fragment: Fragment) {
         val navigationProvider = fragment as? T
-        val handled = handleFragment(navigationProvider)
+        handled = handleFragment(navigationProvider)
         if (!handled) dispatchOnParent(fragment)
     }
 

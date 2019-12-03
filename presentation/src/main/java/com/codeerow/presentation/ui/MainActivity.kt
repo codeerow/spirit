@@ -23,11 +23,11 @@ class MainActivity : AppCompatActivity(), AacNavigationProvider {
     }
 
 
-    /* Lifecycle */
+    /** Lifecycle */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setupToolbar()
         navController.value = (navFragment as NavHostFragment).navController
+        setupToolbar()
     }
 }
