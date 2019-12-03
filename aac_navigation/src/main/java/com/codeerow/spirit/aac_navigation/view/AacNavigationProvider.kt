@@ -1,6 +1,5 @@
 package com.codeerow.spirit.aac_navigation.view
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import com.codeerow.spirit.navigation.view.NavigationProvider
