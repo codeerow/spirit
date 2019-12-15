@@ -10,5 +10,6 @@ class FinishActivity(private val withResult: Int? = null) : NavigationCommand() 
     private fun handle(currentActivity: androidx.fragment.app.FragmentActivity) {
         withResult?.let { currentActivity.setResult(withResult) }
         currentActivity.finish()
+        handled = true
     }
 }

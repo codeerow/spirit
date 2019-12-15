@@ -14,16 +14,16 @@ class StartActivity(private val activity: Class<out FragmentActivity>,
     override fun execute(fragment: Fragment) {
         val currentActivity = fragment.requireActivity()
         val intent = configureIntent(currentActivity)
-        forResult?.let { fragment.startActivityForResult(intent, it) }
-                ?: fragment.startActivity(intent)
+        forResult?.let { fragment.startActivityForResult(intent, it) } ?: fragment.startActivity(intent)
         if (finishCurrentActivity) currentActivity.finish()
+        handled = true
     }
 
     override fun execute(activity: FragmentActivity) {
         val intent = configureIntent(activity)
-        forResult?.let { activity.startActivityForResult(intent, it) }
-                ?: activity.startActivity(intent)
+        forResult?.let { activity.startActivityForResult(intent, it) } ?: activity.startActivity(intent)
         if (finishCurrentActivity) activity.finish()
+        handled = true
     }
 
 

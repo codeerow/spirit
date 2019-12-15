@@ -22,5 +22,6 @@ class ShowDialog(private val dialog: DialogFragment,
         bundle.configureBundle()
         dialog.arguments = bundle
         dialog.show(childFragmentManager, dialog.classTag)
+        handled = true
     }
 }
