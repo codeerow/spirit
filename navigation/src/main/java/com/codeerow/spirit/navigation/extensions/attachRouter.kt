@@ -6,6 +6,6 @@ import com.codeerow.spirit.navigation.Router
 
 fun <R : Router> Fragment.attachRouter(router: R) {
     router.navigationBus.observe(this, Observer { command ->
-        if(!command.handled) command.execute(this)
+        if (!command.handled) command.execute(this)
     })
 }

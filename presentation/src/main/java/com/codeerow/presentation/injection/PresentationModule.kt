@@ -1,56 +1,41 @@
 package com.codeerow.presentation.injection
 
-import com.codeerow.presentation.ui.MainActivity
-import com.codeerow.presentation.ui.dialogs.choose_item.ChooseItemDialog
-import com.codeerow.presentation.ui.screens.fragment_a.AFragment
 import com.codeerow.presentation.ui.screens.fragment_a.AViewModel
-import com.codeerow.presentation.ui.screens.fragment_b.BFragment
 import com.codeerow.presentation.ui.screens.fragment_b.BViewModel
-import com.codeerow.presentation.ui.screens.fragment_c.CFragment
-import com.codeerow.presentation.ui.screens.fragment_d.DFragment
-import com.codeerow.presentation.ui.screens.fragment_e.EFragment
-import com.codeerow.presentation.ui.screens.fragment_f.FFragment
-import com.codeerow.presentation.ui.screens.navigation_block_search.search_form_dialog.SearchFormDialogFragment
-import com.codeerow.presentation.ui.screens.navigation_block_search.search_result_dialog.SearchResultDialogFragment
 import com.codeerow.presentation.ui.screens.navigation_block_search.search_result_dialog.SearchResultViewModel
-import com.codeerow.presentation.ui.screens.navigation_block_search.transactions.TransactionsFragment
 import com.codeerow.presentation.ui.screens.navigation_block_search.transactions.TransactionsViewModel
-import com.codeerow.presentation.ui.screens.navigation_fragment_holder.holder_a.AHolderFragment
-import com.codeerow.presentation.ui.screens.navigation_fragment_holder.holder_a.fragment_1a.FirstAFragment
-import com.codeerow.presentation.ui.screens.navigation_fragment_holder.holder_a.fragment_2a.SecondAFragment
-import com.codeerow.presentation.ui.screens.navigation_fragment_holder.holder_b.BHolderFragment
-import com.codeerow.presentation.ui.screens.navigation_fragment_holder.holder_b.fragment_1.FirstBFragment
-import com.codeerow.presentation.ui.screens.navigation_fragment_holder.holder_b.fragment_2.SecondBFragment
 import com.codeerow.presentation.ui.screens.navigation_fragment_holder.holder_b.fragment_2.SecondBViewModel
+import com.codeerow.spirit.core.ExceptionDispatcher
+import com.codeerow.spirit.core.Executor
+import io.reactivex.Single
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 
 val viewModels = module {
-    viewModel { AViewModel() }
+    viewModel { AViewModel(get()) }
     viewModel { BViewModel() }
     viewModel { SearchResultViewModel() }
     viewModel { TransactionsViewModel() }
     viewModel { SecondBViewModel() }
 }
 
+val errorHandling = module {
+    single { ExceptionDispatcher() }
+}
 
-val screens = module {
-    factory { MainActivity() }
-    factory { AFragment() }
-    factory { BFragment() }
-    factory { CFragment() }
-    factory { DFragment() }
-    factory { EFragment() }
-    factory { FFragment() }
-    factory { ChooseItemDialog() }
-    factory { SearchFormDialogFragment() }
-    factory { SearchResultDialogFragment() }
-    factory { TransactionsFragment() }
-    factory { FirstAFragment() }
-    factory { SecondAFragment() }
-    factory { AHolderFragment() }
-    factory { FirstBFragment() }
-    factory { SecondBFragment() }
-    factory { BHolderFragment() }
+val executors = module {
+    single<Executor<Single<*>, Disposable>> {
+        val dispatcher = get<ExceptionDispatcher>()
+
+        object : Executor<Single<*>, Disposable> {
+            override fun execute(input: Single<*>): Disposable {
+                return input
+                        .subscribeOn(Schedulers.io())
+                        .subscribe({}, { dispatcher.dispatch(it) })
+            }
+        }
+    }
 }
