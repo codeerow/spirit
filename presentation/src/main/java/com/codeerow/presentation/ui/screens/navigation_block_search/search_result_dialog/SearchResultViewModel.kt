@@ -5,10 +5,11 @@ import com.codeerow.presentation.ui.screens.navigation_block_search.search_form_
 import com.codeerow.presentation.ui.widgets.recycler.choice.StringListViewHolder
 import com.codeerow.presentation.ui.widgets.recycler.choice.StringListViewModel
 import com.codeerow.spirit.mvvm.viewmodel.RxViewModel
+import com.codeerow.spirit.mvvm.viewmodel.decoration.SubscriptionDecoration
 import com.jakewharton.rxrelay2.PublishRelay
 
 
-class SearchResultViewModel : RxViewModel(),
+class SearchResultViewModel(subscriptionDecoration: SubscriptionDecoration) : RxViewModel(subscriptionDecoration),
         StringListViewModel,
         SearchFormViewPresentation {
 

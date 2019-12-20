@@ -1,17 +1,15 @@
 package com.codeerow.presentation.ui.screens.fragment_a
 
 import com.codeerow.presentation.data.usecases.RandomizedUseCase
-import com.codeerow.spirit.core.Executor
 import com.codeerow.spirit.mvvm.lifecycle.BindableLiveData
 import com.codeerow.spirit.mvvm.state.bindWith
 import com.codeerow.spirit.mvvm.viewmodel.RxViewModel
+import com.codeerow.spirit.mvvm.viewmodel.decoration.SubscriptionDecoration
 import com.codeerow.spirit.state.State
-import io.reactivex.Single
-import io.reactivex.disposables.Disposable
 import kotlin.random.Random
 
 
-class AViewModel(private val executor: Executor<Single<*>, Disposable>) : RxViewModel() {
+class AViewModel(subscriptionDecoration: SubscriptionDecoration) : RxViewModel(subscriptionDecoration) {
 
     val state = BindableLiveData<State>(default = State.New())
 
@@ -26,8 +24,8 @@ class AViewModel(private val executor: Executor<Single<*>, Disposable>) : RxView
     }
 
     fun makeRequest() {
-        executor.execute(useCase1.start(Random.nextBoolean())).bindToLifecycle()
-        executor.execute(useCase2.start(Random.nextBoolean())).bindToLifecycle()
-        executor.execute(useCase3.start(Random.nextBoolean())).bindToLifecycle()
+        useCase1.start(Random.nextBoolean()).map { null }.subscribeByViewModel()
+        useCase2.start(Random.nextBoolean()).subscribeByViewModel()
+        useCase3.start(Random.nextBoolean()).subscribeByViewModel()
     }
 }

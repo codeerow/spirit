@@ -1,6 +1,8 @@
 package com.codeerow.spirit.mvvm.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.codeerow.spirit.mvvm.viewmodel.decoration.EmptyDecoration
+import com.codeerow.spirit.mvvm.viewmodel.decoration.SubscriptionDecoration
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -11,7 +13,7 @@ import io.reactivex.disposables.Disposable
 /**
  * Adds methods and extensions for clearing disposables for ViewModel lifecycle.
  * */
-open class RxViewModel : ViewModel() {
+open class RxViewModel(subscriptionDecoration: SubscriptionDecoration = EmptyDecoration()) : ViewModel(), SubscriptionDecoration by subscriptionDecoration {
     private val lifecycleDisposables = CompositeDisposable()
 
 
@@ -34,17 +36,17 @@ open class RxViewModel : ViewModel() {
      * destroying.
      * */
     fun <T : Any?> Single<T>.subscribeByViewModel(onNext: (T) -> Unit = {}): Disposable {
-        return this.subscribe(onNext)
+        return this.subscribeDecorated(onNext)
                 .bindToLifecycle()
     }
 
     fun Completable.subscribeByViewModel(onComplete: () -> Unit = {}): Disposable {
-        return this.subscribe(onComplete)
+        return this.subscribeDecorated(onComplete)
                 .bindToLifecycle()
     }
 
     fun <T : Any?> Observable<T>.subscribeByViewModel(onComplete: (T) -> Unit = {}): Disposable {
-        return this.subscribe(onComplete)
+        return this.subscribeDecorated(onComplete)
                 .bindToLifecycle()
     }
 }

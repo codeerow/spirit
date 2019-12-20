@@ -4,9 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import com.codeerow.presentation.ui.dialogs.choose_item.ChooseItemViewPresentation
 import com.codeerow.presentation.ui.widgets.recycler.choice.StringListViewHolder
 import com.codeerow.spirit.mvvm.viewmodel.RxViewModel
+import com.codeerow.spirit.mvvm.viewmodel.decoration.SubscriptionDecoration
 
 
-class BViewModel : RxViewModel(),
+class BViewModel(subscriptionDecoration: SubscriptionDecoration) : RxViewModel(subscriptionDecoration),
         ChooseItemViewPresentation {
 
     override var listBehavior: (item: StringListViewHolder, position: Int) -> Any = { _, _ -> }

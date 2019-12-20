@@ -2,10 +2,11 @@ package com.codeerow.presentation.ui.screens.navigation_block_search.transaction
 
 import com.codeerow.presentation.ui.screens.navigation_block_search.search_form_dialog.SearchFormViewPresentation
 import com.codeerow.spirit.mvvm.viewmodel.RxViewModel
+import com.codeerow.spirit.mvvm.viewmodel.decoration.SubscriptionDecoration
 import com.jakewharton.rxrelay2.PublishRelay
 
 
-class TransactionsViewModel : RxViewModel(),
+class TransactionsViewModel(subscriptionDecoration: SubscriptionDecoration) : RxViewModel(subscriptionDecoration),
         SearchFormViewPresentation {
 
     val router = TransactionsRouter()
